@@ -6,11 +6,13 @@ dt = 1/30;
 % Take the derivative using the central difference method
 % neglect velocity in z since it is small and should average out
 twoLinVel = [];
-for i = 2:(length(a_xyz(1,:)) - 1)
+for i = 2:(length(twoCamera(1,:)) - 1)
     dx = twoCamera(1,i+1) - twoCamera(1,i-1);
     dy = twoCamera(2,i+1) - twoCamera(2,i-1);
     
-    twoLinVel(i-1) = abs(dy/dx)/(4*dt);
+    magnitude = sqrt(dx^2 + dy^2);
+    
+    twoLinVel(i-1) = magnitude/(4*dt);
 end
 
 twoAvgLinVel = mean(twoLinVel);
@@ -22,7 +24,9 @@ for i = 2:(length(oneCamera(:,1)) - 1)
     dx = oneCamera(i+1,1) - oneCamera(i-1,1);
     dy = oneCamera(i+1,2) - oneCamera(i-1,2);
     
-    oneLinVel(i-1) = abs(dy/dx)/(4*dt);  
+    magnitude = sqrt(dx^2 + dy^2);
+    
+    oneLinVel(i-1) = magnitude/(4*dt);  
 end
 
 oneAvgLinVel = mean(oneLinVel);
