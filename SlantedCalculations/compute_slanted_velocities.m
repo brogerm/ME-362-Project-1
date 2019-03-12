@@ -4,7 +4,6 @@ dt = 1/30;
 %% compute velocity from 2 camera case
 
 % Take the derivative using the central difference method
-% neglect velocity in z since it is small and should average out
 twoLinVel = [];
 for i = 2:(length(a_xyz(1,:)) - 1)
     dx = twoCamera(1,i+1) - twoCamera(1,i-1);
