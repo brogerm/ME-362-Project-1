@@ -1,4 +1,4 @@
-plot_slanted_3d
+% plot_slanted_3d
 dt = 1/30;
 
 %% compute velocity from 2 camera case
@@ -36,8 +36,6 @@ oneAvgAngVel = oneAvgLinVel ./ r;
 %% plot the 2 and 1 camera cases
 time = (dt:dt:dt*length(twoLinVel));
 
-plotOneAvgLinVel = zeros(length(time)) + oneAvgLinVel;
-plotTwoAvgLinVel = zeros(length(time)) + twoAvgLinVel;
 trueVel = 2.556 * r;
 
 timeEndpoints = [min(time) max(time)];
@@ -45,13 +43,13 @@ timeEndpoints = [min(time) max(time)];
 figure(2)
 clf
 hold on
-title('Computed Linear Velocities')
+% title('Computed Linear Velocities')
 xlabel('Time (s)')
 ylabel('Velocity (in/s)')
-plot(time, twoLinVel)
-plot(time, oneLinVel)
-plot(timeEndpoints, [twoAvgLinVel twoAvgLinVel], '--yellow')
-plot(timeEndpoints, [oneAvgLinVel oneAvgLinVel], 'LineStyle', '-.', 'Color', [185 66 244]/norm([185 66 244]))
-plot(timeEndpoints, trueLinVel, 'LineStyle', '-', 'Color', 'black')
+plot(time, twoLinVel, 'LineStyle', '--', 'Marker', '*')
+plot(time, oneLinVel, 'LineStyle', '--', 'Marker', '*')
+plot(timeEndpoints, [twoAvgLinVel twoAvgLinVel])
+plot(timeEndpoints, [oneAvgLinVel oneAvgLinVel])
+plot(timeEndpoints, [trueVel trueVel])
 hold off
-% legend({'2 Camera', '1 Camera', '2 Camera Avg', '1 Camera Avg', 'True value'})
+legend({'2 Camera', '1 Camera', '2 Camera Avg', '1 Camera Avg', 'True value'})

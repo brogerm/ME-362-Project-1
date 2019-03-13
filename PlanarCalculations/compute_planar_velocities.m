@@ -1,4 +1,4 @@
-plot_3d
+% plot_3d
 dt = 1/30;
 
 %% compute velocity from 2 camera case
@@ -40,13 +40,14 @@ plotTwoAvgLinVel = zeros(length(time)) + twoAvgLinVel;
 trueLinVel = zeros(length(time)) + 2.556 * r;
 
 figure(2)
+clf
 hold on
-title('Computed Linear Velocities')
 xlabel('Time (s)')
 ylabel('Velocity (in/s)')
-plot(time, twoLinVel)
-plot(time, oneLinVel)
+plot(time, twoLinVel, 'LineStyle', '--', 'Marker', '*')
+plot(time, oneLinVel, 'LineStyle', '--', 'Marker', '*')
 plot(time, plotTwoAvgLinVel)
 plot(time, plotOneAvgLinVel)
 plot(time, trueLinVel)
 legend({'2 Camera', '1 Camera', '2 Camera Avg', '1 Camera Avg', 'True value'})
+hold off

@@ -57,22 +57,26 @@ oneCamera = [x, y, z];
 ideal = [x_i, y_i, z_i];
 
 figure(1)
+clf
+ax = axes;
+ax.Camera
 hold on
-plot3(twoCamera(1,:), twoCamera(3,:), twoCamera(2,:),'-blue', 'LineWidth',2);
-plot3(oneCamera(:,1), oneCamera(:,3), oneCamera(:,2), '--green', 'LineWidth',2)
+plot3(twoCamera(1,:), twoCamera(3,:), twoCamera(2,:), 'Color', 'blue', 'LineStyle', 'none', 'Marker', '.', 'MarkerSize',20);
+plot3(oneCamera(:,1), oneCamera(:,3), oneCamera(:,2), 'Color', [0, 0.760, 0.541], 'LineStyle', 'none', 'Marker', '.', 'MarkerSize',20)
 plot3(ideal(:,1), ideal(:,3), ideal(:,2), '-red', 'LineWidth',2)
 plot3(center3D(1), center3D(3), center3D(2), '*black');
 
 grid on
 axis equal
-title('Slanted Rotation Trajectories')
-xlabel('x-axis')
-ylabel('y-axis')
-zlabel('z-axis')
+% title('Slanted Rotation Trajectories')
+xlabel('X (in)')
+ylabel('Y (in)')
+zlabel('Z (in)')
 % xlim([5 25]);
 % ylim([0 10]);
 % zlim([-5 15]);
 legend({'2 Camera', '1 Camera', 'Ideal', 'Center of Rotation'})
+view(ax, 100, 10)
 
 
 
